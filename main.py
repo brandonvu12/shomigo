@@ -21,6 +21,7 @@ class MainHandler(webapp2.RequestHandler):
         login_url = users.create_login_url('/')
         greeting = '<a href="{}">Sign in</a>'.format(login_url)
     self.response.write(greeting)
+    self.response.write(login_template.render())
 
 
 
