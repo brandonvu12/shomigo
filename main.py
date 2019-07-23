@@ -16,7 +16,7 @@ class MainHandler(webapp2.RequestHandler):
         self.response.write(login_template.render())
         nickname = user.nickname()
         logout_url = users.create_logout_url('/')
-        greeting = '(<a href="{}">sign out</a>)'.format(
+        greeting = '{} (<a href="{}">sign out</a>)'.format(
         nickname, logout_url)
     else:
         login_url = users.create_login_url('/')
