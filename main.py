@@ -10,6 +10,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class MainHandler(webapp2.RequestHandler):
   def get(self):
+    login_template = JINJA_ENVIRONMENT.get_template("login.html")
     user = users.get_current_user()
     if user:
         nickname = user.nickname()
@@ -20,6 +21,7 @@ class MainHandler(webapp2.RequestHandler):
         login_url = users.create_login_url('/')
         greeting = '<a href="{}">Sign in</a>'.format(login_url)
     self.response.write(greeting)
+    self.response.write(login_template.render())
 
 
 
