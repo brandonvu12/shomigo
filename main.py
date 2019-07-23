@@ -13,14 +13,16 @@ class MainHandler(webapp2.RequestHandler):
       login_template = JINJA_ENVIRONMENT.get_template("login.html")
     user = users.get_current_user()
     if user:
-      self.response.write("You're logged in!")
+        nickname = user.nickname()
+        logout_url = users.create_logout_url('/')
+        greeting = 'Welcome, {}! (<a href="{}">sign out</a>)'.format(
+        nickname, logout_url)
     else:
-      # This line creates a URL to log in with your Google Credentials.
-      login_url = users.create_login_url('/')
-      # This line uses string templating to create an anchor (link) element.
-      login_html_element = '<a href="%s">Sign in</a>' % login_url
-      # This line puts that URL on screen in a clickable anchor elememt.
-      self.response.write('Please log in.<b>' + login_html_element)
+        login_url = users.create_login_url('/')
+        greeting = '<a href="{}">Sign in</a>'.format(login_url)
+    self.response.write(greeting)
+
+
 
 app = webapp2.WSGIApplication([
   ('/', MainHandler)
