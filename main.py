@@ -10,6 +10,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class MainHandler(webapp2.RequestHandler):
   def get(self):
+      login_template = JINJA_ENVIRONMENT.get_template("login.html")
     user = users.get_current_user()
     if user:
       self.response.write("You're logged in!")
