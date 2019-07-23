@@ -1,12 +1,13 @@
 import webapp2
 import jinja2
 from google.appengine.api import users
+import os
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
-    
+
 class MainHandler(webapp2.RequestHandler):
   def get(self):
     user = users.get_current_user()
