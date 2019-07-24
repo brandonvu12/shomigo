@@ -6,6 +6,15 @@
   </head>
   <body>
 <h1>Your Profile</h1>
+<form method=POST action="/profile">
+    Your Watched Shows:<br>
+    <input type="text" name="user-show" value="">
+    <input type="submit" value="Watched">
+  </form>
+  <h1>Your Favorite Foods</h1>
+  {% for food in you_watched %}
+    <p>{{food.food_name}}</p>
+  {% endfor %}
 <form action="/">
   <button type="submit">Go Back</button>
 </form>

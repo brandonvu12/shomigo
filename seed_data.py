@@ -1,5 +1,5 @@
-from profile_model import Profile
+from profile_model import Watched
 
 
 def seed_data():
-    user_key = Profile(name=nickname, shows = woof).put()
+    user_key = Profile(name= user.nickname(), shows = "The Flash").put()

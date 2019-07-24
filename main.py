@@ -2,7 +2,7 @@ import webapp2
 import jinja2
 from google.appengine.api import users
 import os
-from profile_model import Profile
+from profile_model import Watched
 from seed_data import seed_data
 
 JINJA_ENVIRONMENT = jinja2.Environment(
@@ -27,9 +27,31 @@ class MainHandler(webapp2.RequestHandler):
 
 class Profile(webapp2.RequestHandler):
     def get(self):
-        profile_template = JINJA_ENVIRONMENT.get_template("templates/profile.html")
-        self.response.write(profile_template.render())
-        my_list = []
+        my_user = users.get_current_user()
+        show_list_template = JINJA_ENVIRONMENT.get_template("templates/profile.html")
+        your_shows = Watched.query().filter(Watched.user_id == my_user.user_id ()).order(-Watched.show_watched).fetch()
+        all_shows = Watched.query().order(-Watched.show_watched).fetch()
+        dict_for_template = {
+            'you_watched': your_shows,
+        }
+        self.response.write(show_list_template.render(dict_for_template))
+
+    def post(self):
+        the_show_wanted = self.request.get('user-show')
+
+        #put into database
+        show_record = Watched(show_watched = the_show_wanted)
+        show_record.put()
+
+# class EditProfileHandler(webapp2.RequestHandler):
+#     def get(self):
+#         personal_key_string = self.request get('personal_key')
+#         personal_key = ndb.key(urlsafe = personal_key_string)
+#         personal = personal_key.get()
+#         user = uses.get_current_user()
+#         if  BLAH.creator != user.user_id():
+#             pass
+#         else:
 
 class List(webapp2.RequestHandler):
     def get(self):
