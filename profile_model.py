@@ -2,6 +2,6 @@ from google.appengine.ext import ndb
 
 
 
-class Profile(ndb.Model):
-    name =  ndb.KeyProperty(required = True)
-    shows = ndb.StringProperty(required = False)
+class Watched(ndb.Model):
+    show_watched = ndb.StringProperty(required = True)
+    user_id = ndb.StringProperty()
