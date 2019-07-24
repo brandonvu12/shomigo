@@ -2,6 +2,8 @@ import webapp2
 import jinja2
 from google.appengine.api import users
 import os
+from profile_model import Profile
+from seed_data import seed_data
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -39,6 +41,9 @@ class Friends(webapp2.RequestHandler):
         friends_template = JINJA_ENVIRONMENT.get_template("templates/friends.html")
         self.response.write(friends_template.render())
 
+class LoadDataHandler(webapp2.RequestHandler):
+    def get(self):
+        seed_data()
 
 app = webapp2.WSGIApplication([
   ('/', MainHandler),
