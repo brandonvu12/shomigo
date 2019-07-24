@@ -27,6 +27,7 @@ class Profile(webapp2.RequestHandler):
     def get(self):
         profile_template = JINJA_ENVIRONMENT.get_template("templates/profile.html")
         self.response.write(profile_template.render())
+        my_list = []
 
 class List(webapp2.RequestHandler):
     def get(self):
