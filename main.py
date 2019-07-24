@@ -10,7 +10,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class MainHandler(webapp2.RequestHandler):
   def get(self):
-    login_template = JINJA_ENVIRONMENT.get_template("login.html")
+    login_template = JINJA_ENVIRONMENT.get_template("templates/login.html")
     user = users.get_current_user()
     if user:
         self.response.write(login_template.render())
@@ -23,9 +23,25 @@ class MainHandler(webapp2.RequestHandler):
         greeting = '<a href="{}">Sign in</a>'.format(login_url)
     self.response.write(greeting)
 
+class Profile(webapp2.RequestHandler):
+    def get(self):
+        profile_template = JINJA_ENVIRONMENT.get_template("templates/profile.html")
+        self.response.write(profile_template.render())
 
+class List(webapp2.RequestHandler):
+    def get(self):
+        list_template = JINJA_ENVIRONMENT.get_template("templates/list.html")
+        self.response.write(list_template.render())
+
+class Friends(webapp2.RequestHandler):
+    def get(self):
+        friends_template = JINJA_ENVIRONMENT.get_template("templates/friends.html")
+        self.response.write(friends_template.render())
 
 
 app = webapp2.WSGIApplication([
-  ('/', MainHandler)
+  ('/', MainHandler),
+  ('/profile', Profile),
+  ('/list', List),
+  ('/friends', Friends),
 ], debug=True)
