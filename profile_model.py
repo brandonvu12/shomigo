@@ -3,4 +3,6 @@ from google.appengine.ext import ndb
 
 
 class Profile(ndb.Model):
-        nickname =  ndb.StringProperty(required=True)
+        name =  ndb.KeyProperty(required=True)
+        shows = ndb.StringProperty(required = True)
+        
