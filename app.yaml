@@ -9,18 +9,7 @@ handlers:
 
 - url: .*
   script: main.app
-
-- url: /profile
-  login: required
-
-- url: /friends
-  login: required
-
-- url: /list
-  login: required
-
-
-
+ 
 libraries:
 - name: webapp2
   version: "2.5.2"
