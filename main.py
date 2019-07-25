@@ -151,9 +151,20 @@ class Friends(webapp2.RequestHandler):
     def get(self):
         friends_template = JINJA_ENVIRONMENT.get_template("templates/friends.html")
         all_shows = Show.query().order(-Show.show_name).fetch()
+        all_profiles = Profile.query().order(-Profile.nickname).fetch()
+
+        shows_mapping = {}
+
+        for profile in all_profiles:
+            shows_mapping[profile.key.id()] = {'profile': profile, 'shows': []}
+
+        for show in all_shows:
+            user_id = show.user.id()
+            shows_mapping[user_id]['shows'].append(show)
         dict_for_template = {
-            'friend_shows': all_shows,
+            'shows_mapping': shows_mapping,
         }
+
         self.response.write(friends_template.render(dict_for_template))
 
 class NickName(webapp2.RequestHandler):
