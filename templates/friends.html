@@ -3,17 +3,19 @@
   <head>
     <meta charset="utf-8">
     <title>Friends</title>
-    <link rel = "stylesheet" href = "css/style.css">
+    <link rel = "stylesheet" href = "css/friends.css">
   </head>
   <body>
+    
+    <form action="/">
+      <button id="goback" type="submit">Go Back</button>
+    </form>
     <h1>Friends</h1>
     <h2>The shows all your friends watched:</h2>
     {% for amount_shows in friend_shows %}
     <p>{{amount_shows.show_watched}}</p>
     {% endfor %}
-    <form action="/">
-      <button type="submit">Go Back</button>
-    </form>
+
 
     <footer class="foot">
       (c) 2019 CSSI
