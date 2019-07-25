@@ -7,7 +7,7 @@ h1{
 }
 
 
-.buttons{
+#buttons{
   display:grid;
   flex: 40px;
   grid-template-rows: 1fr 1fr ;
@@ -22,16 +22,22 @@ h1{
   width: 100px;
   height: 100px;
   cursor: pointer;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 100px;
+  width: 90spx;
 }
-#friends{
+.friends{
   padding-left: 10px;
   padding-right: 10px;
+
 }
 .content{
   padding-bottom: 10rem;
 
 
 }
+
 .foot{
   background-color: red;
   color: black;
