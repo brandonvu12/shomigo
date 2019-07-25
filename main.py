@@ -62,7 +62,7 @@ class List(webapp2.RequestHandler):
         url = 'https://api.themoviedb.org/3/search/tv?api_key=affe4b9cbbe43b30bf85a6ae31037c7d&query=%s' %(user_search)
         result = urlfetch.fetch(url)
         result_dict = {
-            "test": result.content,
+            "show_return": result.content.decode('utf-8'),
         }
         self.response.write(list_template.render(result_dict))
 
