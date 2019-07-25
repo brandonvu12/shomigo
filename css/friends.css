@@ -20,6 +20,8 @@ body{
 h1{
   color:    #990000;
   text-align: center;
+  text-decoration: underline;
+  text-decoration-style:dotted;
 }
 #goback{
 
@@ -28,4 +30,9 @@ h1{
   width:65px;
   float: right;
   margin-bottom: 20%;
+}
+h2{
+  color: #FDF5E6;
+  font-size: 24px;
+
 }

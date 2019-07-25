@@ -1,0 +1,21 @@
+body{
+
+   background-color: #616161;
+}
+h1{
+  color:  #990000;
+  text-align: center;
+}
+.content1{
+  color:#FDF5E6;
+  padding-top: 30px;
+  padding-bottom: 25px;
+  text-align: center;
+  color: 	#FAF0E6;
+  text-justify: inter-word;
+  margin-left: 2%;
+  margin-right: 4%;
+}
+#nickname22{
+  margin-top: 10%;
+}
