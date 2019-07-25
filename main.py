@@ -67,7 +67,6 @@ class List(webapp2.RequestHandler):
         list_template = JINJA_ENVIRONMENT.get_template("templates/list.html")
 #Gets the search text
         user_search = self.request.get('user_search_html')
-
 #If there isnt a search return nothing
         if not user_search:
             self.response.write(list_template.render())
@@ -77,6 +76,7 @@ class List(webapp2.RequestHandler):
             result = urlfetch.fetch(url)
             result_decoded = result.content.decode('utf-8')
             result_json = json.loads(result_decoded)
+#If there arent results then disply text
             if not result_json['results']:
                 result_dict = {
                     "show_return1": "No shows match your search",
@@ -85,7 +85,6 @@ class List(webapp2.RequestHandler):
             else:
                 result_show1 = result_json['results'][0]['name']
                 result_date1 = result_json['results'][0]['first_air_date']
-#Sends it to the html file
                 result_dict = {
                     "show_return1": result_show1,
                     "show_date1": result_date1,
