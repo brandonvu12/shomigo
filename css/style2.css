@@ -3,15 +3,19 @@ body{
    background-color: #616161;
 }
 h1{
+  display: flex;
   color:    #990000;
-  text-align: center;
+  justify-content: center;
+  margin-left: 2%;
 }
 
-#inputwatched{
+.Input{
   padding-top: 30px;
   padding-bottom: 30px;
   text-align: center;
   color: 	#FAF0E6;
+  text-justify: inter-word;
+  margin-left: 3%;
 }
 #back{
   background-color: 	#FDF5E6;
@@ -31,11 +35,26 @@ h1{
   display: flex;
   align-self: stretch;
   width: max;
-  margin-top:33%;
+  margin-top:16%;
   margin-bottom: 0px;
 
 }
-#submitwatched{
+#shows{
+  margin-top: 10%;
+}
+#settings{
   background-color:	#FAF0E6;
+}
+
+#yours{
+  text-align: center;
+  margin-left: 5%;
+}
+#SubmitWatched{
+    background-color:#FDF5E6;
+
+}
+#usershow{
+  background-color:#FDF5E6;
 
 }
