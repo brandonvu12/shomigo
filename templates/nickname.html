@@ -2,23 +2,33 @@
 <html>
   <head>
     <title>About</title>
+    <link rel = "stylesheet" href = "css/nickname.css">
+
   </head>
   <body>
+    <h1> About You </h1>
+<div class="content1">
     {% if profile is not none %}
     You joined on {{profile.joined_on.strftime("%c")}}
     You updated on {{profile.updated_on.strftime("%c")}}
     <form method=POST action="/nickname">
+<div id="nickname22">
       Your Nickname:<br>
       <input type="text" name="nickname" value="{{profile.nickname}}">
       <input type="submit" value="Update">
     </form>
     {% else %}
+  </div>
+</div>
     Welcome!
     <form method=POST action="/nickname">
+
       Your Nickname:<br>
-      <input type="text" name="nickname" value="">
-      <input type="submit" value="Update">
+      <input id="insertname"type="text" name="nickname" value="">
+      <input id="updatebutton" type="submit" value="Update">
     </form>
+
     {% endif %}
+
   </body>
 </html>
