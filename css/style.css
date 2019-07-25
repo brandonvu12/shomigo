@@ -1,8 +1,9 @@
 body{
-  background-color: #616161;
+
+   background-color: #616161;
 }
 h1{
-  color: red;
+  color:  #990000;
   text-align: center;
 }
 
@@ -21,16 +22,41 @@ h1{
   color:blue;
   width: 100px;
   height: 100px;
-  cursor: pointer;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   flex-direction: column;
-  height: 100px;
-  width: 90spx;
+
+  justify-content: center;
+
 }
 .friends{
+  margin-left :50%;
   padding-left: 10px;
   padding-right: 10px;
-
+  height: 50px;
+  width: 250px;
+  align-items: center;
+  cursor: pointer;
+  background-color: 	#FDF5E6;
+  color: black;
+}
+.pro{
+  height: 50px;
+  width: 250px;
+  align-items: center;
+  cursor: pointer;
+  background-color: 	#FDF5E6;
+  color: black;
+}
+.shows{
+  height: 50px;
+  width: 250px;
+  padding-left: 10px;
+  padding-right: 10px;
+  align-self: center;
+  flex-flow: wrap;
+  cursor: pointer;
+  background-color: 	#FDF5E6;
+  color: black;
 }
 .content{
   padding-bottom: 10rem;
@@ -39,14 +65,12 @@ h1{
 }
 
 .foot{
-  background-color: red;
+  background-color:  #990000;
   color: black;
   padding: 5px;
   width: max;
   bottom:0;
-  margin-top:25%;
+  margin-top:20%;
 
-}
-#greeting{
-  background-color: green;
+
 }

@@ -1,0 +1,31 @@
+.foot{
+  background-color:   #990000;
+  color: black;
+  padding:5px;
+  width: max;
+  height: max;
+  display: flex;
+  align-self: stretch;
+  width: max;
+  margin-top:40%;
+  margin-bottom: 0px;
+  display: flex;
+  flex-basis: auto;
+}
+
+body{
+
+   background-color: #616161;
+}
+h1{
+  color:    #990000;
+  text-align: center;
+}
+#goback{
+
+  background-color: 	#FDF5E6;
+  height:20px;
+  width:65px;
+  float: right;
+  margin-bottom: 20%;
+}
