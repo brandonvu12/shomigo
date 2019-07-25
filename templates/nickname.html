@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>About</title>
+  </head>
+  <body>
+    {% if profile is not none %}
+    You joined on {{profile.joined_on.strftime("%c")}}
+    You updated on {{profile.updated_on.strftime("%c")}}
+    <form method=POST action="/nickname">
+      Your Nickname:<br>
+      <input type="text" name="nickname" value="{{profile.nickname}}">
+      <input type="submit" value="Update">
+    </form>
+    {% else %}
+    Welcome!
+    <form method=POST action="/nickname">
+      Your Nickname:<br>
+      <input type="text" name="nickname" value="">
+      <input type="submit" value="Update">
+    </form>
+    {% endif %}
+  </body>
+</html>

@@ -3,6 +3,7 @@ import jinja2
 from google.appengine.api import users
 import os
 from profile_model import Watched
+from profile_model import Profile
 from seed_data import seed_data
 from google.appengine.api import urlfetch
 
@@ -39,8 +40,7 @@ class ProfileHandler(webapp2.RequestHandler):
 
     def post(self):
         the_show_wanted = self.request.get('user-show')
-
-        #put into database
+        #put shows into the database
         show_record = Watched(show_watched = the_show_wanted)
         show_record.put()
 
@@ -65,13 +65,40 @@ class Friends(webapp2.RequestHandler):
         }
         self.response.write(friends_template.render(dict_for_template))
 
-class LoadDataHandler(webapp2.RequestHandler):
+class NickName(webapp2.RequestHandler):
     def get(self):
-        seed_data()
+        my_user = users.get_current_user()
+        profile_template = JINJA_ENVIRONMENT.get_template("templates/nickname.html")
+        my_profiles = Profile.query().filter(Profile.user_id == my_user.user_id ()).fetch(1)
+        if len(my_profiles) == 1:
+            my_profile = my_profiles[0]
+        else:
+            my_profile = None
+        dict_for_template = {
+            'profile': my_profile
+        }
+        self.response.write(profile_template.render(dict_for_template))
+
+    def post(self):
+        my_user = users.get_current_user()
+        my_nickname = self.request.get('nickname')
+
+        my_profiles = Profile.query().filter(Profile.user_id == my_user.user_id ()).fetch(1)
+        if len(my_profiles) == 1:
+            my_profile = my_profiles[0]
+        else:
+            my_profile = Profile()
+
+        my_profile.nickname = my_nickname
+        my_profile.user_id = my_user.user_id()
+        my_profile.put()
+        self.redirect('/profile')
 
 app = webapp2.WSGIApplication([
   ('/', MainHandler),
   ('/profile', ProfileHandler),
   ('/list', List),
   ('/friends', Friends),
+  ('/nickname', NickName),
+
 ], debug=True)
