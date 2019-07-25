@@ -5,19 +5,26 @@
   <link rel = "stylesheet" href = "css/style.css">
   </head>
   <body >
+
+<div class="Content">
     <h1>
       WELCOME TO SHOMIGO
     </h1>
-<div class="buttons">
-    <form action="/profile">
-      <button id="pro" type="submit">Your Profile</button>
-    </form>
-    <form action="/list">
-      <button id="shows" type="submit">T.V. Show List</button>
-    </form>
-    <form action="/friends">
-      <button id="friends" type="submit">Friends</button>
-    </form>
+    {{greeting}}
+  <div class="buttons">
+      <form action="/profile">
+        <button id="pro" type="submit">Your Profile</button>
+      </form>
+      <form action="/list">
+        <button id="shows" type="submit">T.V. Show List</button>
+      </form>
+      <form action="/friends">
+        <button id="friends" type="submit">Friends</button>
+      </form>
+  </div>
 </div>
+<footer class="foot">
+  (c) 2019 CSSI
+  </footer>
   </body>
 </html>

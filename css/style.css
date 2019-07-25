@@ -1,5 +1,5 @@
 body{
-  background-color: silver;
+  background-color: #616161;
 }
 h1{
   color: red;
@@ -8,11 +8,39 @@ h1{
 
 
 .buttons{
-  display:flex;
-  flex-direction: column;
-  text-align: center;
+  display:grid;
+  flex: 40px;
+  grid-template-rows: 1fr 1fr ;
+  grid-template-columns: 1fr 1fr ;
+  grid-gap: 2vw;
+
+  /* text-align: center; */
   padding-top: 50px;
+  padding-bottom: 50px;
+  margin: auto;
   color:blue;
-  width: auto;
-  height: auto;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+#friends{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.content{
+  padding-bottom: 10rem;
+
+
+}
+.foot{
+  background-color: red;
+  color: black;
+  padding: 5px;
+  width: max;
+  bottom:0;
+  margin-top:25%;
+
+}
+#greeting{
+  background-color: green;
 }
