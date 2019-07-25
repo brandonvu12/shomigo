@@ -21,11 +21,14 @@
 </div>
     <div id="result">
       <h3>Result</h3>
-      {{show_return1}} {{show_date1}} <br><img src="{{show_poster1}}"><br>
-      {{show_return2}} {{show_date2}} <br><img src="{{show_poster2}}"><br>
-      {{show_return3}} {{show_date3}} <br><img src="{{show_poster3}}"><br>
-      {{show_return4}} {{show_date4}} <br><img src="{{show_poster4}}"><br>
-      {{show_return5}} {{show_date5}} <br><img src="{{show_poster5}}"><br>
+      {% for show in shows %}
+         {{ show['name'] }} {{ show['first_air_date'] }} <br>
+         {% if show['poster_path'] %}
+           <img src="https://image.tmdb.org/t/p/w185/{{show['poster_path']}}"><br>
+         {% else %}
+           <img src="images/showmigoplaceholder.png"><br>
+         {% endif %}
+      {% endfor %}
     <div><br>
 
     <footer class="foot">
