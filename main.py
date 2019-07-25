@@ -5,6 +5,7 @@ import os
 from profile_model import Watched
 from seed_data import seed_data
 from google.appengine.api import urlfetch
+import json
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -62,9 +63,12 @@ class List(webapp2.RequestHandler):
         user_search =  user_search.replace(" ", "+")
         url = 'https://api.themoviedb.org/3/search/tv?api_key=affe4b9cbbe43b30bf85a6ae31037c7d&query=%s' %(user_search)
         result = urlfetch.fetch(url)
+        result_decoded = result.content.decode('utf-8')
+        result_json = json.loads(result_decoded)
+        result_show = result_json['results'][0]['name']
 #Sends it to the html file
         result_dict = {
-            "show_return": result.content.decode('utf-8'),
+            "show_return": result_show,
         }
         self.response.write(list_template.render(result_dict))
 
