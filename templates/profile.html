@@ -7,7 +7,7 @@
   </head>
   <body>
    <!-- add shows to the list -->
-<h1>Your Profile</h1>
+  <h1>Your Profile</h1>
 <form method=POST action="/profile">
     Put in a new show you watched:<br>
     <input type="text" name="user-show" value="">
@@ -15,8 +15,12 @@
   </form>
   <!-- the watched shows that are collected from that specifc user -->
   <h1>Your Watched Shows</h1>
-  {% for amount_shows in you_watched %}
-    <p>{{amount_shows.show_watched}}</p>
+  {% for show in shows %}
+    <p>{{show.show_name}}</p>
+  {% endfor %}
+  <h1>All Watched Shows</h1>
+  {% for show in all_shows %}
+    <p>{{show.show_name}}</p>
   {% endfor %}
   <form action="/">
     <button type="submit">Go Back</button>

@@ -2,7 +2,8 @@ import webapp2
 import jinja2
 from google.appengine.api import users
 import os
-from profile_model import Watched
+import time
+from profile_model import Show
 from profile_model import Profile
 from seed_data import seed_data
 from google.appengine.api import urlfetch
@@ -31,18 +32,31 @@ class ProfileHandler(webapp2.RequestHandler):
     def get(self):
         my_user = users.get_current_user()
         show_list_template = JINJA_ENVIRONMENT.get_template("templates/profile.html")
-        your_shows = Watched.query().order(-Watched.show_watched).fetch()
-        all_shows = Watched.query().order(-Watched.show_watched).fetch()
+        my_profiles = Profile.query().filter(Profile.user_id == my_user.user_id ()).fetch(1)
+        if len(my_profiles) == 1:
+            my_profile = my_profiles[0]
+        else:
+            my_profile = Profile()
+        your_shows = Show.query().filter(Show.user == my_profile.key).order(-Show.show_name).fetch()
+        all_shows = Show.query().order(-Show.show_name).fetch()
         dict_for_template = {
-            'you_watched': your_shows,
+            'shows': your_shows,
+            'all_shows': all_shows,
         }
         self.response.write(show_list_template.render(dict_for_template))
 
     def post(self):
+        my_user = users.get_current_user()
+        # We ar assuming the user has a profile at this point
+        my_profile = Profile.query().filter(Profile.user_id == my_user.user_id ()).fetch(1)[0]
         the_show_wanted = self.request.get('user-show')
         #put shows into the database
-        show_record = Watched(show_watched = the_show_wanted)
+        show_record = Show()
+        show_record.show_name = the_show_wanted
+        show_record.user = my_profile.key
         show_record.put()
+        time.sleep(0.1)
+        self.redirect('/profile')
 
 class List(webapp2.RequestHandler):
     def get(self):
@@ -59,7 +73,7 @@ class List(webapp2.RequestHandler):
 class Friends(webapp2.RequestHandler):
     def get(self):
         friends_template = JINJA_ENVIRONMENT.get_template("templates/friends.html")
-        all_shows = Watched.query().order(-Watched.show_watched).fetch()
+        all_shows = Show.query().order(-Show.show_name).fetch()
         dict_for_template = {
             'friend_shows': all_shows,
         }
