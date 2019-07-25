@@ -4,6 +4,7 @@ from google.appengine.api import users
 import os
 from profile_model import Watched
 from seed_data import seed_data
+from google.appengine.api import urlfetch
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -56,7 +57,14 @@ class Profile(webapp2.RequestHandler):
 class List(webapp2.RequestHandler):
     def get(self):
         list_template = JINJA_ENVIRONMENT.get_template("templates/list.html")
-        self.response.write(list_template.render())
+        #gets the search text and gets it from the api
+        user_search = self.request.get('user_search_html')
+        url = 'https://api.themoviedb.org/3/search/tv?api_key=affe4b9cbbe43b30bf85a6ae31037c7d&query=%s' %(user_search)
+        result = urlfetch.fetch(url)
+        result_dict = {
+            "test": result.content,
+        }
+        self.response.write(list_template.render(result_dict))
 
 class Friends(webapp2.RequestHandler):
     def get(self):
