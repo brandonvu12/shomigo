@@ -86,15 +86,26 @@ class List(webapp2.RequestHandler):
                 number_of_results = len(result_json['results'])
                 result_show1 = result_json['results'][0]['name']
                 result_date1 = result_json['results'][0]['first_air_date']
+                result_poster1 = result_json['results'][0]['poster_path']
+                poster_url1 = "https://image.tmdb.org/t/p/w185%s" %(result_poster1)
                 if number_of_results >= 5:
                     result_show2 = result_json['results'][1]['name']
                     result_date2 = result_json['results'][1]['first_air_date']
+                    result_poster2 = result_json['results'][1]['poster_path']
                     result_show3 = result_json['results'][2]['name']
                     result_date3 = result_json['results'][2]['first_air_date']
+                    result_poster3 = result_json['results'][2]['poster_path']
                     result_show4 = result_json['results'][3]['name']
                     result_date4 = result_json['results'][3]['first_air_date']
+                    result_poster4 = result_json['results'][3]['poster_path']
                     result_show5 = result_json['results'][4]['name']
                     result_date5 = result_json['results'][4]['first_air_date']
+                    result_poster5 = result_json['results'][4]['poster_path']
+                    poster_url2 = "https://image.tmdb.org/t/p/w185%s" %(result_poster2)
+                    poster_url3 = "https://image.tmdb.org/t/p/w185%s" %(result_poster3)
+                    poster_url4 = "https://image.tmdb.org/t/p/w185%s" %(result_poster4)
+                    poster_url5 = "https://image.tmdb.org/t/p/w185%s" %(result_poster5)
+
                 elif number_of_results >= 4:
                     result_show2 = result_json['results'][1]['name']
                     result_date2 = result_json['results'][1]['first_air_date']
@@ -134,14 +145,19 @@ class List(webapp2.RequestHandler):
                 result_dict = {
                     "show_return1": result_show1,
                     "show_date1": result_date1,
+                    "show_poster1": poster_url1,
                     "show_return2": result_show2,
                     "show_date2": result_date2,
+                    "show_poster2": poster_url2,
                     "show_return3": result_show3,
                     "show_date3": result_date3,
+                    "show_poster3": poster_url3,
                     "show_return4": result_show4,
                     "show_date4": result_date4,
+                    "show_poster4": poster_url4,
                     "show_return5": result_show5,
                     "show_date5": result_date5,
+                    "show_poster5": poster_url5,
 
                 }
 
