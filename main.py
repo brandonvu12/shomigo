@@ -110,6 +110,7 @@ class NickName(webapp2.RequestHandler):
             my_profile = my_profiles[0]
         else:
             my_profile = None
+
         dict_for_template = {
             'profile': my_profile
         }
@@ -118,7 +119,6 @@ class NickName(webapp2.RequestHandler):
     def post(self):
         my_user = users.get_current_user()
         my_nickname = self.request.get('nickname')
-
         my_profiles = Profile.query().filter(Profile.user_id == my_user.user_id ()).fetch(1)
         if len(my_profiles) == 1:
             my_profile = my_profiles[0]
