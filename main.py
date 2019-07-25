@@ -58,8 +58,9 @@ class Profile(webapp2.RequestHandler):
 class List(webapp2.RequestHandler):
     def get(self):
         list_template = JINJA_ENVIRONMENT.get_template("templates/list.html")
-#Gets the search text and gets it from the api
+#Gets the search text
         user_search = self.request.get('user_search_html')
+#If there isnt a search return nothing 
         if not user_search:
             self.response.write(list_template.render())
         else:
