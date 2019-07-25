@@ -3,14 +3,22 @@
   <head>
     <meta charset="utf-8">
     <title>Show List</title>
-    <link rel = "stylesheet" href = "css/style.css">
+    <link rel = "stylesheet" href = "css/shows.css">
   </head>
   <body>
+    <form action="/">
+      <button type="submit">Go Back</button>
+    </form>
+
+    <h1 >List of Shows</h1>
+<div id="Searchshows">
     <form action="/list">
         Search for a show:<br>
         <input type="text" name="user_search_html">
-        <input type="submit" value="Search">
+        <input type="submit" value="Search"> <br>
+        Results:
       </form>
+</div>
     <h1>List of Shows</h1>
     <div id="result">
       <h3>Result</h3>
@@ -19,11 +27,8 @@
       {{show_return3}} {{show_date3}} <br>
       {{show_return4}} {{show_date4}} <br>
       {{show_return5}} {{show_date5}} <br>
-
     <div><br>
-    <form action="/">
-      <button type="submit">Go Back</button>
-    </form>
+
     <footer class="foot">
       (c) 2019 CSSI
       </footer>

@@ -6,7 +6,7 @@ h1{
   display: flex;
   color:    #990000;
   justify-content: center;
-  margin-left: 2%;
+  margin-left: 4%; 
 }
 
 .Input{
@@ -15,13 +15,14 @@ h1{
   text-align: center;
   color: 	#FAF0E6;
   text-justify: inter-word;
-  margin-left: 3%;
+  margin-left: 2%;
+  margin-right: 4%;
 }
 #back{
   background-color: 	#FDF5E6;
   height:20px;
   width:65px;
-  float: right;
+  float: left;
   margin-bottom: 20%;
 }
 
@@ -41,9 +42,11 @@ h1{
 }
 #shows{
   margin-top: 10%;
+
 }
 #settings{
   background-color:	#FAF0E6;
+  float: right;
 }
 
 #yours{
