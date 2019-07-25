@@ -67,6 +67,7 @@ class List(webapp2.RequestHandler):
         list_template = JINJA_ENVIRONMENT.get_template("templates/list.html")
 #Gets the search text
         user_search = self.request.get('user_search_html')
+
 #If there isnt a search return nothing
         if not user_search:
             self.response.write(list_template.render())
