@@ -19,15 +19,18 @@ class MainHandler(webapp2.RequestHandler):
     login_template = JINJA_ENVIRONMENT.get_template("templates/login.html")
     user = users.get_current_user()
     if user:
-        self.response.write(login_template.render())
         nickname = user.nickname()
-        logout_url = users.create_logout_url('/')
-        greeting = '{} (<a href="{}">sign out</a>)'.format(
-        nickname, logout_url)
+        login_url = users.create_logout_url('/')
+        login_text = "sign out"
     else:
         login_url = users.create_login_url('/')
-        greeting = '<a href="{}">Sign in</a>'.format(login_url)
-    self.response.write(greeting)
+        login_text = "Sign in"
+        nickname = "guest"
+
+    self.response.write(login_template.render({
+        "nickname": nickname,
+        "login_url" : login_url,
+        "login_text": login_text}))
 
 class ProfileHandler(webapp2.RequestHandler):
     def get(self):
