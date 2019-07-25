@@ -2,7 +2,9 @@ import webapp2
 import jinja2
 from google.appengine.api import users
 import os
-from profile_model import Watched
+import time
+from profile_model import Show
+from profile_model import Profile
 from seed_data import seed_data
 from google.appengine.api import urlfetch
 import json
@@ -30,40 +32,43 @@ class MainHandler(webapp2.RequestHandler):
         "login_url" : login_url,
         "login_text": login_text}))
 
-class Profile(webapp2.RequestHandler):
+class ProfileHandler(webapp2.RequestHandler):
     def get(self):
         my_user = users.get_current_user()
         show_list_template = JINJA_ENVIRONMENT.get_template("templates/profile.html")
-        your_shows = Watched.query().order(-Watched.show_watched).fetch()
-        all_shows = Watched.query().order(-Watched.show_watched).fetch()
+        my_profiles = Profile.query().filter(Profile.user_id == my_user.user_id ()).fetch(1)
+        if len(my_profiles) == 1:
+            my_profile = my_profiles[0]
+        else:
+            my_profile = Profile()
+        your_shows = Show.query().filter(Show.user == my_profile.key).order(-Show.show_name).fetch()
+        all_shows = Show.query().order(-Show.show_name).fetch()
         dict_for_template = {
-            'you_watched': your_shows,
+            'shows': your_shows,
+            'all_shows': all_shows,
         }
         self.response.write(show_list_template.render(dict_for_template))
 
     def post(self):
+        my_user = users.get_current_user()
+        # We ar assuming the user has a profile at this point
+        my_profile = Profile.query().filter(Profile.user_id == my_user.user_id ()).fetch(1)[0]
         the_show_wanted = self.request.get('user-show')
-
-        #put into database
-        show_record = Watched(show_watched = the_show_wanted)
+        #put shows into the database
+        show_record = Show()
+        show_record.show_name = the_show_wanted
+        show_record.user = my_profile.key
         show_record.put()
-
-# class EditProfileHandler(webapp2.RequestHandler):
-#     def get(self):
-#         personal_key_string = self.request get('personal_key')
-#         personal_key = ndb.key(urlsafe = personal_key_string)
-#         personal = personal_key.get()
-#         user = uses.get_current_user()
-#         if  BLAH.creator != user.user_id():
-#             pass
-#         else:
+        time.sleep(0.1)
+        self.redirect('/profile')
 
 class List(webapp2.RequestHandler):
     def get(self):
         list_template = JINJA_ENVIRONMENT.get_template("templates/list.html")
 #Gets the search text
         user_search = self.request.get('user_search_html')
-#If there isnt a search return nothing 
+
+#If there isnt a search return nothing
         if not user_search:
             self.response.write(list_template.render())
         else:
@@ -72,31 +77,64 @@ class List(webapp2.RequestHandler):
             result = urlfetch.fetch(url)
             result_decoded = result.content.decode('utf-8')
             result_json = json.loads(result_decoded)
-            result_show1 = result_json['results'][0]['name']
-            result_date1 = result_json['results'][0]['first_air_date']
-#Sends it to the html file
-            result_dict = {
-                "show_return1": result_show1,
-                "show_date1": result_date1,
+            if not result_json['results']:
+                result_dict = {
+                    "show_return1": "No shows match your search",
                 }
-            self.response.write(list_template.render(result_dict))
+                self.response.write(list_template.render(result_dict))
+            else:
+                result_show1 = result_json['results'][0]['name']
+                result_date1 = result_json['results'][0]['first_air_date']
+#Sends it to the html file
+                result_dict = {
+                    "show_return1": result_show1,
+                    "show_date1": result_date1,
+                }
+                self.response.write(list_template.render(result_dict))
 
 class Friends(webapp2.RequestHandler):
     def get(self):
         friends_template = JINJA_ENVIRONMENT.get_template("templates/friends.html")
-        all_shows = Watched.query().order(-Watched.show_watched).fetch()
+        all_shows = Show.query().order(-Show.show_name).fetch()
         dict_for_template = {
             'friend_shows': all_shows,
         }
         self.response.write(friends_template.render(dict_for_template))
 
-class LoadDataHandler(webapp2.RequestHandler):
+class NickName(webapp2.RequestHandler):
     def get(self):
-        seed_data()
+        my_user = users.get_current_user()
+        profile_template = JINJA_ENVIRONMENT.get_template("templates/nickname.html")
+        my_profiles = Profile.query().filter(Profile.user_id == my_user.user_id ()).fetch(1)
+        if len(my_profiles) == 1:
+            my_profile = my_profiles[0]
+        else:
+            my_profile = None
+        dict_for_template = {
+            'profile': my_profile
+        }
+        self.response.write(profile_template.render(dict_for_template))
+
+    def post(self):
+        my_user = users.get_current_user()
+        my_nickname = self.request.get('nickname')
+
+        my_profiles = Profile.query().filter(Profile.user_id == my_user.user_id ()).fetch(1)
+        if len(my_profiles) == 1:
+            my_profile = my_profiles[0]
+        else:
+            my_profile = Profile()
+
+        my_profile.nickname = my_nickname
+        my_profile.user_id = my_user.user_id()
+        my_profile.put()
+        self.redirect('/profile')
 
 app = webapp2.WSGIApplication([
   ('/', MainHandler),
-  ('/profile', Profile),
+  ('/profile', ProfileHandler),
   ('/list', List),
   ('/friends', Friends),
+  ('/nickname', NickName),
+
 ], debug=True)

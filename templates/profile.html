@@ -6,22 +6,29 @@
     <link rel = "stylesheet" href = "css/style2.css">
   </head>
   <body>
-    <form action="/">
-      <button id = "back"  type="submit">Go Back</button>
-    </form>
-<h1>Your Profile</h1>
-<div id="inputwatched"
-  <form method=POST action="/profile">
-      Your Watched Shows:<br>
-      <input type="text" name="user-show" value="">
-      <input id="submitwatched"type="submit" value="Watched">
-    </form>
-</div>
-  <h1>Your Favorite Foods</h1>
-  {% for amount_shows in you_watched %}
-    <h2>{{amount_shows.show_watched}}</h2>
+   <!-- add shows to the list -->
+  <h1>Your Profile</h1>
+<form method=POST action="/profile">
+    Put in a new show you watched:<br>
+    <input type="text" name="user-show" value="">
+    <input type="submit" value="Watched">
+  </form>
+  <!-- the watched shows that are collected from that specifc user -->
+  <h1>Your Watched Shows</h1>
+  {% for show in shows %}
+    <p>{{show.show_name}}</p>
   {% endfor %}
-
+  <h1>All Watched Shows</h1>
+  {% for show in all_shows %}
+    <p>{{show.show_name}}</p>
+  {% endfor %}
+  <form action="/">
+    <button type="submit">Go Back</button>
+  </form>
+  <form action="/nickname">
+    <button type="submit">Settings/About</button>
+  </form>
+<!-- this is the footer -->
   <footer class="foot">
     (c) 2019 CSSI
     </footer>
