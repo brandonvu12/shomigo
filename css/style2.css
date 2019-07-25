@@ -1,0 +1,41 @@
+body{
+
+   background-color: #616161;
+}
+h1{
+  color:    #990000;
+  text-align: center;
+}
+
+#inputwatched{
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+  color: 	#FAF0E6;
+}
+#back{
+  background-color: 	#FDF5E6;
+  height:20px;
+  width:65px;
+  float: right;
+  margin-bottom: 20%;
+}
+
+
+.foot{
+  background-color:   #990000;
+  color: black;
+  padding:5px;
+  width: max;
+  height: max;
+  display: flex;
+  align-self: stretch;
+  width: max;
+  margin-top:33%;
+  margin-bottom: 0px;
+
+}
+#submitwatched{
+  background-color:	#FAF0E6;
+
+}
