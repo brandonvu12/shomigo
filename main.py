@@ -26,7 +26,7 @@ class MainHandler(webapp2.RequestHandler):
         greeting = '<a href="{}">Sign in</a>'.format(login_url)
     self.response.write(greeting)
 
-class Profile(webapp2.RequestHandler):
+class ProfileHandler(webapp2.RequestHandler):
     def get(self):
         my_user = users.get_current_user()
         show_list_template = JINJA_ENVIRONMENT.get_template("templates/profile.html")
@@ -43,16 +43,6 @@ class Profile(webapp2.RequestHandler):
         #put into database
         show_record = Watched(show_watched = the_show_wanted)
         show_record.put()
-
-# class EditProfileHandler(webapp2.RequestHandler):
-#     def get(self):
-#         personal_key_string = self.request get('personal_key')
-#         personal_key = ndb.key(urlsafe = personal_key_string)
-#         personal = personal_key.get()
-#         user = uses.get_current_user()
-#         if  BLAH.creator != user.user_id():
-#             pass
-#         else:
 
 class List(webapp2.RequestHandler):
     def get(self):
@@ -81,7 +71,7 @@ class LoadDataHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
   ('/', MainHandler),
-  ('/profile', Profile),
+  ('/profile', ProfileHandler),
   ('/list', List),
   ('/friends', Friends),
 ], debug=True)

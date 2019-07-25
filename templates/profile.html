@@ -6,19 +6,39 @@
     <link rel = "stylesheet" href = "css/style.css">
   </head>
   <body>
+   <!-- add shows to the list -->
 <h1>Your Profile</h1>
 <form method=POST action="/profile">
     Your Watched Shows:<br>
     <input type="text" name="user-show" value="">
     <input type="submit" value="Watched">
   </form>
-  <h1>Your Favorite Foods</h1>
+  <!-- the watched shows that are collected from that specifc user -->
+  <h1>Your Watched Shows</h1>
   {% for amount_shows in you_watched %}
     <h2>{{amount_shows.show_watched}}</h2>
   {% endfor %}
   <form action="/">
     <button type="submit">Go Back</button>
   </form>
+  <!-- Below this line is the form to establish nickname or show the dates about it -->
+  {% if profile is not none %}
+You joined on {{profile.joined_on.strftime("%c")}}
+You updated on {{profile.updated_on.strftime("%c")}}
+<form method=POST action="/profile">
+  Your Nickname:<br>
+  <input type="text" name="nickname" value="{{profile.nickname}}">
+  <input type="submit" value="Update">
+</form>
+{% else %}
+Welcome!
+<form method=POST action="/profile">
+  Your Nickname:<br>
+  <input type="text" name="nickname" value="">
+  <input type="submit" value="Update">
+</form>
+{% endif %}
+<!-- this is the footer -->
   <footer class="foot">
     (c) 2019 CSSI
     </footer>
