@@ -12,10 +12,13 @@
     </form>
     <h1>Friends</h1>
     <h2>The shows all your friends watched:</h2>
-    {% for amount_shows in friend_shows %}
-    <p>{{amount_shows.show_watched}}</p>
-    {% endfor %}
 
+    {% for id, info in shows_mapping.items() %}
+    <h3>{{ info["profile"].nickname }}</h3>
+      {% for show in info["shows"] %}
+      <p> {{show.show_name}} </p>
+      {% endfor %}
+    {% endfor %}
 
     <footer class="foot">
       (c) 2019 CSSI
