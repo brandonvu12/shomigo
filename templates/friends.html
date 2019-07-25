@@ -6,10 +6,14 @@
   </head>
   <body>
     <h1>Friends</h1>
+    <h2>The shows all your friends watched:</h2>
+    {% for amount_shows in friend_shows %}
+    <p>{{amount_shows.show_watched}}</p>
+    {% endfor %}
     <form action="/">
       <button type="submit">Go Back</button>
     </form>
-    
+
 
   </body>
 </html>

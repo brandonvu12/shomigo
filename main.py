@@ -29,7 +29,7 @@ class Profile(webapp2.RequestHandler):
     def get(self):
         my_user = users.get_current_user()
         show_list_template = JINJA_ENVIRONMENT.get_template("templates/profile.html")
-        your_shows = Watched.query().filter(Watched.user_id == my_user.user_id ()).order(-Watched.show_watched).fetch()
+        your_shows = Watched.query().order(-Watched.show_watched).fetch()
         all_shows = Watched.query().order(-Watched.show_watched).fetch()
         dict_for_template = {
             'you_watched': your_shows,
@@ -61,7 +61,11 @@ class List(webapp2.RequestHandler):
 class Friends(webapp2.RequestHandler):
     def get(self):
         friends_template = JINJA_ENVIRONMENT.get_template("templates/friends.html")
-        self.response.write(friends_template.render())
+        all_shows = Watched.query().order(-Watched.show_watched).fetch()
+        dict_for_template = {
+            'friend_shows': all_shows,
+        }
+        self.response.write(friends_template.render(dict_for_template))
 
 class LoadDataHandler(webapp2.RequestHandler):
     def get(self):
