@@ -40,6 +40,7 @@ class ProfileHandler(webapp2.RequestHandler):
         if len(my_profiles) == 1:
             my_profile = my_profiles[0]
         else:
+            self.redirect('/nickname')
             my_profile = Profile()
         your_shows = Show.query().filter(Show.user == my_profile.key).order(-Show.show_name).fetch()
         all_shows = Show.query().order(-Show.show_name).fetch()
@@ -137,6 +138,7 @@ class NickName(webapp2.RequestHandler):
         my_profile.nickname = my_nickname
         my_profile.user_id = my_user.user_id()
         my_profile.put()
+        time.sleep(0.1)
         self.redirect('/profile')
 
 app = webapp2.WSGIApplication([
