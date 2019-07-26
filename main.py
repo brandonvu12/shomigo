@@ -85,7 +85,7 @@ class List(webapp2.RequestHandler):
                 self.response.write(list_template.render(result_dict))
             else:
                 result_dict = {
-                    "shows": result_json['results'][:5],
+                    "shows": result_json['results'][:10],
                 }
                 self.response.write(list_template.render(result_dict))
 
