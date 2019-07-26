@@ -133,7 +133,7 @@ class List(webapp2.RequestHandler):
         show_record.user = my_profile.key
         show_record.put()
         time.sleep(0.1)
-        self.redirect('/profile')
+        self.redirect('/list')
 
 class Friends(webapp2.RequestHandler):
     def get(self):
