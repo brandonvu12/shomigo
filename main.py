@@ -22,7 +22,7 @@ def force_signup(handler):
     my_profile = Profile.query().filter(Profile.user_id == user.user_id()).get()
     if not my_profile:
         handler.redirect('/nickname')
-    return my_profile
+    return user, my_profile
 
 
 class MainHandler(webapp2.RequestHandler):
@@ -62,7 +62,7 @@ class LoginHandler(webapp2.RequestHandler):
 
 class ProfileHandler(webapp2.RequestHandler):
     def get(self):
-        my_profile = force_signup(self)
+        _, my_profile = force_signup(self)
         if not my_profile:
             return
         show_list_template = JINJA_ENVIRONMENT.get_template("templates/profile.html")
@@ -89,11 +89,11 @@ class ProfileHandler(webapp2.RequestHandler):
 
 class List(webapp2.RequestHandler):
     def get(self):
-        my_profile = force_signup(self)
+        _, my_profile = force_signup(self)
         if not my_profile:
             return
 
-            list_template = JINJA_ENVIRONMENT.get_template("templates/list.html")
+        list_template = JINJA_ENVIRONMENT.get_template("templates/list.html")
 #Gets the search text
         user_search = self.request.get('user_search_html')
 #If there isnt a search return nothing
@@ -118,11 +118,10 @@ class List(webapp2.RequestHandler):
                 self.response.write(list_template.render(result_dict))
 
     def post(self):
-        my_profile = force_signup(self)
+        my_user, my_profile = force_signup(self)
         if not my_profile:
             return
 
-        my_user = users.get_current_user()
         # We ar assuming the user has a profile at this point
         my_profile = Profile.query().filter(Profile.user_id == my_user.user_id ()).fetch(1)[0]
         the_show_wanted = self.request.get('user-show')
@@ -138,7 +137,7 @@ class List(webapp2.RequestHandler):
 
 class Friends(webapp2.RequestHandler):
     def get(self):
-        my_profile = force_signup(self)
+        my_user, my_profile = force_signup(self)
         if not my_profile:
             return
         friends_template = JINJA_ENVIRONMENT.get_template("templates/friends.html")
@@ -171,10 +170,9 @@ class NickName(webapp2.RequestHandler):
         self.response.write(profile_template.render(dict_for_template))
 
     def post(self):
-        my_profile = force_signup(self)
+        my_user, my_profile = force_signup(self)
         if not my_profile:
             my_profile = Profile()
-        my_user = users.get_current_user()
         my_nickname = self.request.get('nickname')
         my_profile.nickname = my_nickname
         my_profile.user_id = my_user.user_id()
