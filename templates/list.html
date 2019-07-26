@@ -15,12 +15,11 @@
     <form action="/list">
         Search for a show:<br>
         <input type="text" name="user_search_html">
-        <input type="submit" value="Search"> <br>
-        Results:
+        <input type="submit" value="Search"> <br><br>
       </form>
 </div>
     <div id="result">
-      <h3>Result</h3>
+      <h3>Results</h3>
       {% for show in shows %}
          {{ show['name'] }} {{ show['first_air_date'] }} <br>
          {% if show['poster_path'] %}
