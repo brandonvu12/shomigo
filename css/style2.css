@@ -150,7 +150,6 @@ transition-duration: 0.4s;
 }
 #profile{
 text-align: center;
-margin-right: 20%;
 
 }
 p{
@@ -179,7 +178,7 @@ p{
   --neon-border-color: #08f;
 }
 h3{
-  font-size: 13px;
+  font-size: 20px;
   font-weight: 90;
   font-style: italic;
   color: #fff;
@@ -188,12 +187,11 @@ h3{
   border-radius: 2rem;
   text-transform: uppercase;
   animation: flicker 1.5s infinite alternate;
-  width: 55px;
+  width: 90px;
   height: 20px;
   margin: auto;
    margin-top: 10%;
   text-align: center;
-  margin-left: 85%;
   margin-bottom: 10px;
 }
 
