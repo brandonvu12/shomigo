@@ -34,10 +34,10 @@ h1 {
 body{
 
    /* background-color:  #00004d; */
-   margin-right: 8%;
-   margin-left: 8%;
+   margin-right: 7.5%;
+   margin-left: 7.5%;
    min-height: 10vh;
-   background-image: radial-gradient(white 5%,  Gray 95%);
+   background-image: radial-gradient(#4C4C4C 1%, #393939 99%);
    background-blend-mode: color;
    color:white;
 
@@ -48,7 +48,7 @@ body{
 .content1{
   text-align: center;
   max-width: 100%;
-  background-color: black;
+  background-color: #161616;
   height: 100vh;
   min-width: 85%;
   max-height:100;
