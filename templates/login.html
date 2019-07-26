@@ -5,8 +5,14 @@
   <link rel = "stylesheet" href = "css/style.css">
   </head>
   <body >
-    {{nickname}} <a href="{{login_url}}">{{login_text}} </a>
-<div class="Content">
+  <div class="content">
+    <header>
+      <div class="auth">
+        {{nickname}} <a href="{{login_url}}">{{login_text}} </a>
+      </div>
+    </header>
+
+
     <h1>
       WELCOME TO SHOMIGO
     </h1>
@@ -21,9 +27,11 @@
         <button class="friends" type="submit">Friends</button>
       </form>
   </div>
+
+  <footer class="foot">
+    (c) 2019 CSSI
+    </footer>
 </div>
-<footer class="foot">
-  (c) 2019 CSSI
-  </footer>
+
   </body>
 </html>
