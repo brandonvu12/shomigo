@@ -152,9 +152,8 @@ transition-duration: 0.4s;
 text-align: center;
 
 }
-p{
+.show{
   font-size: 18px;
-  display: inline-block;
   vertical-align: middle;
   padding: 10px;
   flex-direction: column;
@@ -162,9 +161,21 @@ p{
   justify-content: center;
   color:white;
   font-weight: 500;
-  margin-bottom: -4%;
-  margin-top: 4%;
 
+
+
+}
+.images{
+  height: 400px;
+  width: 250px;
+  padding: 4%;
+}
+.flex{
+  display: flex;
+
+}
+img{
+  height: 200px;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Exo+2:200i);
