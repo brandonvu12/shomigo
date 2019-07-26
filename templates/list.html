@@ -28,7 +28,7 @@
            <img src="http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png" id="Placeholder">
          {% endif %}
          <form method=POST action="/profile">
-         <button value="{{ show['name'] }}" name="user-show">I've Seen This</button><br>
+         <button value="{{ show['name'] }} ({{ show['first_air_date'] }})" name="user-show">I've Seen This</button><br>
        </form>
       {% endfor %}
     <div><br>
