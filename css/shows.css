@@ -104,14 +104,15 @@ footer{
 
 }
 .content{
-  background-color: black;
+  background-color: #161616;
   margin: auto;
   max-width: 100%;
   height: 100vh;
-  min-width: 85%;
+  min-width: 86%;
   margin-top: -3%;
 padding-top: 3%;
 padding-bottom: 3%;
+margin-right: .7%;
 }
 #back{
   width: 90px;
