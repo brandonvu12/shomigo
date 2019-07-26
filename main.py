@@ -97,7 +97,7 @@ class List(webapp2.RequestHandler):
 #If there arent results then disply text
             if not result_json['results']:
                 result_dict = {
-                    "shows": [{'name': "No shows match your search."}]
+                    "nothing_here": "There's nothing here"
                 }
                 self.response.write(list_template.render(result_dict))
             else:
