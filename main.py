@@ -88,15 +88,15 @@ class List(webapp2.RequestHandler):
         if not user_search:
             self.response.write(list_template.render())
         else:
-            user_search =  user_search.replace(" ", "+")
-            url = 'https://api.themoviedb.org/3/search/tv?api_key=affe4b9cbbe43b30bf85a6ae31037c7d&query=%s' %(user_search)
+            user_search2 =  user_search.replace(" ", "+")
+            url = 'https://api.themoviedb.org/3/search/tv?api_key=affe4b9cbbe43b30bf85a6ae31037c7d&query=%s' %(user_search2)
             result = urlfetch.fetch(url)
             result_decoded = result.content.decode('utf-8')
             result_json = json.loads(result_decoded)
 #If there arent results then disply text
             if not result_json['results']:
                 result_dict = {
-                    "nothing_here": "No show exists"
+                    "nothing_here": '"' + user_search + '" didn\'t match any results.'
                 }
                 self.response.write(list_template.render(result_dict))
             else:
