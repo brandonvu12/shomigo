@@ -86,9 +86,7 @@ class List(webapp2.RequestHandler):
             else:
                 result_dict = {
                     "shows": result_json['results'][:5],
-
                 }
-
                 self.response.write(list_template.render(result_dict))
 
 class Friends(webapp2.RequestHandler):

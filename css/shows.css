@@ -26,3 +26,7 @@ text-decoration: underline;
   justify-content: center;
   background-color: #990000;
 }
+
+#Placeholder{
+  max-width: 200px;
+}
