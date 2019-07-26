@@ -104,10 +104,10 @@ footer{
 
 
 #goback{
-
+  font-size: 16px;
   background-color: 	#FDF5E6;
-  height:20px;
-  width:65px;
+  height:24px;
+  width:85px;
   float: right;
   margin-bottom: 20%;
   cursor: pointer;
@@ -115,6 +115,7 @@ footer{
   float: left;
   margin-top: 3%;
   margin-left: 3%;
+  border-radius: 8px;
 }
 #goback:hover{
   background-color:LightGray;
@@ -130,6 +131,7 @@ h2{
 
 p{
   font-size: 18px;
+  color: white;
   display: inline-block;
   vertical-align: middle;
   padding: 10px;
