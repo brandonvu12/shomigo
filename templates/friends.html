@@ -18,6 +18,11 @@
     <h3>{{ info["profile"].nickname }}</h3>
       {% for show in info["shows"] %}
       <p> {{show.show_name}} </p>
+      {% if not show.poster_path %}
+      <img src="http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png" id="Placeholder">
+      {% else %}
+        <img src="https://image.tmdb.org/t/p/w185/{{ show.poster_path }}">
+      {% endif %}
       {% endfor %}
     {% endfor %}
 
