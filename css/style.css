@@ -74,7 +74,7 @@ body {
   align-items: center;
   background: white;
   min-height: 10vh;
-  background-image: radial-gradient(white 1%, grey 99%);
+  background-image: radial-gradient(#4C4C4C 1%, #393939 99%);
   background-blend-mode: darken;
 }
 
@@ -84,11 +84,10 @@ h1 {
   font-style: italic;
   color: #fff;
   padding: 2rem 4rem;
-  border: 0.4rem solid #fff;
   border-radius: 2rem;
   text-transform: uppercase;
   animation: flicker 1.5s infinite alternate;
-  width: 410px;
+  width: 370px;
   margin: auto;
   text-align: center;
 }
@@ -133,7 +132,7 @@ h1:focus {
 
 .content{
   max-width: 100%;
-  background-color: black;
+  background-color: #161616;
   margin:auto;
   height: 100vh;
   min-width: 85%;
@@ -221,7 +220,6 @@ color: Blue;
 }
 
 .foot{
-  background-color:  silver;
   color: white;
   font-size: 17px ;
   padding: 2px;
