@@ -39,7 +39,7 @@ class LoginHandler(webapp2.RequestHandler):
         self.redirect('/')
         return
 
-    login_url = users.create_login_url('/')
+    login_url = users.create_login_url('/profile')
     login_text = "Sign in"
     nickname = "guest"
 
@@ -81,13 +81,7 @@ class ProfileHandler(webapp2.RequestHandler):
 
 class List(webapp2.RequestHandler):
     def get(self):
-        my_user = users.get_current_user()
         list_template = JINJA_ENVIRONMENT.get_template("templates/list.html")
-        my_profiles = Profile.query().filter(Profile.user_id == my_user.user_id ()).fetch(1)
-        if len(my_profiles) == 1:
-            my_profile = my_profiles[0]
-        else:
-            my_profile = None
 #Gets the search text
         user_search = self.request.get('user_search_html')
 #If there isnt a search return nothing
@@ -108,7 +102,6 @@ class List(webapp2.RequestHandler):
             else:
                 result_dict = {
                     "shows": result_json['results'][:10],
-                    'profile': my_profile,
                 }
                 self.response.write(list_template.render(result_dict))
 
