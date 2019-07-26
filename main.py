@@ -16,21 +16,38 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class MainHandler(webapp2.RequestHandler):
   def get(self):
+    welcome_template = JINJA_ENVIRONMENT.get_template("templates/welcome.html")
+    user = users.get_current_user()
+    if not user:
+        self.redirect('/login')
+        return
+
+    nickname = user.nickname()
+    login_url = users.create_logout_url('/')
+    login_text = "sign out"
+
+    self.response.write(welcome_template.render({
+        "nickname": nickname,
+        "login_url" : login_url,
+        "login_text": login_text}))
+
+class LoginHandler(webapp2.RequestHandler):
+  def get(self):
     login_template = JINJA_ENVIRONMENT.get_template("templates/login.html")
     user = users.get_current_user()
     if user:
-        nickname = user.nickname()
-        login_url = users.create_logout_url('/')
-        login_text = "sign out"
-    else:
-        login_url = users.create_login_url('/')
-        login_text = "Sign in"
-        nickname = "guest"
+        self.redirect('/')
+        return
+
+    login_url = users.create_login_url('/')
+    login_text = "Sign in"
+    nickname = "guest"
 
     self.response.write(login_template.render({
         "nickname": nickname,
         "login_url" : login_url,
         "login_text": login_text}))
+
 
 class ProfileHandler(webapp2.RequestHandler):
     def get(self):
@@ -137,13 +154,13 @@ class NickName(webapp2.RequestHandler):
         my_profile.user_id = my_user.user_id()
         my_profile.put()
         time.sleep(0.1)
-        self.redirect('/profile')
+        self.redirect('/')
 
 app = webapp2.WSGIApplication([
   ('/', MainHandler),
+  ('/login', LoginHandler),
   ('/profile', ProfileHandler),
   ('/list', List),
   ('/friends', Friends),
   ('/nickname', NickName),
-
 ], debug=True)
