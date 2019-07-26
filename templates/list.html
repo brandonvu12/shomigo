@@ -29,9 +29,15 @@
          {% else %}
            <img src="http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png" id="Placeholder">
          {% endif %}
+         {% if profile is not none %}
          <form method=POST action="/list">
          <button value="{{ show['name'] }} ({{ show['first_air_date'] }})" name="user-show">I've Seen This</button><br>
        </form>
+       {% else %}
+       <form action="/profile">
+       <button>Make an account</button><br>
+     </form>
+     {% endif %}
       {% endfor %}
     </div><br>
 
