@@ -88,6 +88,8 @@ h1:focus {
    min-height: 10vh;
    background-image: radial-gradient(#4C4C4C 1%, #393939 99%);
    background-blend-mode: darken;
+   color: white;
+   font-size: 14px;
 }
 
 footer{
@@ -108,8 +110,12 @@ footer{
   margin: auto;
   max-width: 100%;
   height: 100vh;
-  min-width: 86%;
+  min-width: 85%;
+  max-height: 100%;
+  min-height: 85%;
+
   margin-top: -3%;
+  margin-bottom: 100%;
 padding-top: 3%;
 padding-bottom: 3%;
 margin-right: .7%;
@@ -159,7 +165,9 @@ form {
   flex-direction: row;
   flex-wrap: wrap;
 
+
 }
+
 .images{
   height: 400px;
   width: 250px;
