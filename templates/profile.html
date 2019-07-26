@@ -27,15 +27,19 @@
 </div>
   <!-- the watched shows that are collected from that specifc user -->
   <h1 class="neon" id="yours">Your Watched Shows</h1>
+<div class="flex">
   {% for show in shows %}
-    <p>{{show.show_name}}</p>
+  <div class="images">
+
     {% if not show.poster_path %}
     <img src="http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png" id="Placeholder">
     {% else %}
       <img src="https://image.tmdb.org/t/p/w185/{{ show.poster_path }}">
     {% endif %}
+     <div class="show">{{show.show_name}}</div>
+  </div>
   {% endfor %}
-
+</div>
 </div>
 <!-- this is the footer -->
   <footer class="foot">

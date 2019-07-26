@@ -26,8 +26,10 @@
 <br>
     <div id="result">
       <h3>Results</h3>
+  <div class="flex">
             {{nothing_here}}
       {% for show in shows %}
+    <div class="images">
       <form method="post" action="/list">
          {{ show['name'] }}<br>First Air Date:  {{ show['first_air_date'] }} <br>User Rating: {{ show['vote_average'] }}<br>
          {% if show['poster_path'] %}
@@ -37,10 +39,14 @@
            <img src="http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png" id="Placeholder">
          {% endif %}
          <br>
-         <input type="hidden" value="{{ show['name'] }} ({{ show['first_air_date'] }})" name="user-show">
+         <div class="show">
+         <input type="hidden" value="{{ show['name'] }} ({{ show['first_air_date'] }})" name="user-show"> </div>
          <button>I've Seen This</button><br>
        </form>
+     </div>
       {% endfor %}
+    </div>
+  </div>
     </div><br>
     <footer>
       (c) 2019 Team 404
