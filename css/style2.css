@@ -35,7 +35,7 @@ body{
    margin-right: 8%;
    margin-left: 8%;
    min-height: 10vh;
-   background-image: radial-gradient(white 5%,  Gray 95%);
+   background-image: radial-gradient(#4C4C4C 1%, #393939 99%);
    background-blend-mode: color;
 
 
