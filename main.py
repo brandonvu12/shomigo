@@ -88,6 +88,18 @@ class List(webapp2.RequestHandler):
                     "shows": result_json['results'][:5],
                 }
                 self.response.write(list_template.render(result_dict))
+    def post(self):
+        my_user = users.get_current_user()
+        # We ar assuming the user has a profile at this point
+        my_profile = Profile.query().filter(Profile.user_id == my_user.user_id ()).fetch(1)[0]
+        the_show_wanted = self.request.get('user-show')
+        #put shows into the database
+        show_record = Show()
+        show_record.show_name = the_show_wanted
+        show_record.user = my_profile.key
+        show_record.put()
+        time.sleep(0.1)
+        self.redirect('/list')
 
 class Friends(webapp2.RequestHandler):
     def get(self):
