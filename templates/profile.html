@@ -29,6 +29,11 @@
   <h1 class="neon" id="yours">Your Watched Shows</h1>
   {% for show in shows %}
     <p>{{show.show_name}}</p>
+    {% if not show['poster_path'] %}
+    <img src="http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png" id="Placeholder">
+    {% else %}
+      <img src="https://image.tmdb.org/t/p/w185/{{show['poster_path']}}">
+    {% endif %}
   {% endfor %}
 
 </div>
