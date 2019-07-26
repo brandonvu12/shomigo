@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Your Shows</title>
+    <title>Your Profile - Shomigo</title>
     <link rel = "stylesheet" href = "css/style2.css">
   </head>
   <body>
@@ -21,7 +21,7 @@
   </form>
 </header>
    <!-- add shows to the list -->
-<br>  <h1 id="profile" class="neon">Your Profile</h1>
+<br>  <h1 id="profile" class="neon">Hi, {{profile.nickname}}</h1>
 <div class="Input">
 
 </div>
@@ -29,10 +29,10 @@
   <h1 class="neon" id="yours">Your Watched Shows</h1>
   {% for show in shows %}
     <p>{{show.show_name}}</p>
-    {% if not show['poster_path'] %}
+    {% if not show.poster_path %}
     <img src="http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png" id="Placeholder">
     {% else %}
-      <img src="https://image.tmdb.org/t/p/w185/{{show['poster_path']}}">
+      <img src="https://image.tmdb.org/t/p/w185/{{ show.poster_path }}">
     {% endif %}
   {% endfor %}
 
