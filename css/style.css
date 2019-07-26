@@ -84,11 +84,10 @@ h1 {
   font-style: italic;
   color: #fff;
   padding: 2rem 4rem;
-  border: 0.4rem solid #fff;
   border-radius: 2rem;
   text-transform: uppercase;
   animation: flicker 1.5s infinite alternate;
-  width: 410px;
+  width: 370px;
   margin: auto;
   text-align: center;
 }
