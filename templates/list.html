@@ -20,7 +20,9 @@
 </div>
     <div id="result">
       <h3>Results</h3>
+            {{nothing_here}}
       {% for show in shows %}
+
          {{ show['name'] }}<br>First Air Date:  {{ show['first_air_date'] }} <br>User Rating: {{ show['vote_average'] }}<br>
          {% if show['poster_path'] %}
            <img src="https://image.tmdb.org/t/p/w185/{{show['poster_path']}}">
