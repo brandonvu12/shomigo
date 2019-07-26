@@ -10,6 +10,16 @@ indexes:
 # automatically uploaded to the admin console when you next deploy
 # your application using appcfg.py.
 
+- kind: Profile
+  properties:
+  - name: user_id
+  - name: nickname
+
+- kind: Show
+  properties:
+  - name: user
+  - name: show_name
+
 - kind: Show
   properties:
   - name: user
