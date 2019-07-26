@@ -6,11 +6,16 @@
     <link rel = "stylesheet" href = "css/shows.css">
   </head>
   <body>
-    <form action="/">
-      <button type="submit">Go Back</button>
-    </form>
 
-    <h1 >List of Shows</h1>
+<div class="content">
+  <header>
+  <form action="/">
+    <button id="back" type="submit">Go Back</button>
+  </form>
+  </header>
+  <br>
+
+ <h1 >List of Shows</h1>
 <div id="Searchshows">
     <form action="/list">
         Search for a show:<br>
@@ -18,6 +23,7 @@
         <input type="submit" value="Search"> <br><br>
       </form>
 </div>
+<br>
     <div id="result">
       <h3>Results</h3>
             {{nothing_here}}
@@ -36,8 +42,10 @@
        </form>
       {% endfor %}
     </div><br>
-    <footer class="foot">
-      (c) 2019 CSSI
+    <footer>
+      (c) 2019 Team 404
       </footer>
+</div>
+
   </body>
 </html>
