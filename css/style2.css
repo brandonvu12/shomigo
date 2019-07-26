@@ -190,10 +190,12 @@ h3{
   text-transform: uppercase;
   animation: flicker 1.5s infinite alternate;
   width: 55px;
+  height: 20px;
   margin: auto;
    margin-top: 10%;
   text-align: center;
   margin-left: 85%;
+  margin-bottom: 10px;
 }
 
 h3::selection {

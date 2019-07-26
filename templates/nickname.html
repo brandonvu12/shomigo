@@ -6,8 +6,12 @@
 
   </head>
   <body>
+    <div class="content1">
+<div id="shomigo">
+    <h3> SHOMIGO </h3><br>
+</div>
+
     <h1> About You </h1>
-<div class="content1">
     {% if profile is not none %}
     You joined on {{profile.joined_on.strftime("%c")}}
     You updated on {{profile.updated_on.strftime("%c")}}
@@ -19,16 +23,21 @@
     </form>
     {% else %}
   </div>
-</div>
+  <h2>
     Welcome!
-    <form method=POST action="/nickname">
+  <form method=POST action="/nickname">
 
-      Your Nickname:<br>
-      <input id="insertname"type="text" name="nickname" value="">
-      <input id="updatebutton" type="submit" value="Update">
-    </form>
+    Your Nickname:<br>
+    <input type="text" name="nickname" value="">
+    <input  type="submit" value="Update">
+  </form>
 
-    {% endif %}
+  {% endif %}
+  </h2>
+
+
+</div>
+
 
   </body>
 </html>
