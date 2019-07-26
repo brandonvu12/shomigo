@@ -21,12 +21,13 @@
     <div id="result">
       <h3>Results</h3>
       {% for show in shows %}
-         {{ show['name'] }} {{ show['first_air_date'] }} <br>
+         {{ show['name'] }}<br>First Air Date:  {{ show['first_air_date'] }} <br>User Rating: {{ show['vote_average'] }}<br>
          {% if show['poster_path'] %}
-           <img src="https://image.tmdb.org/t/p/w185/{{show['poster_path']}}"><br>
+           <img src="https://image.tmdb.org/t/p/w185/{{show['poster_path']}}">
          {% else %}
-           <img src="http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png" id="Placeholder"><br>
+           <img src="http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png" id="Placeholder">
          {% endif %}
+         <button>I've Seen This</button><br>
       {% endfor %}
     <div><br>
 
