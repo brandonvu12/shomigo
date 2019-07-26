@@ -50,7 +50,7 @@ class LoginHandler(webapp2.RequestHandler):
         self.redirect('/')
         return
 
-    login_url = users.create_login_url('/')
+    login_url = users.create_login_url('/profile')
     login_text = "Sign in"
     nickname = "guest"
 
@@ -74,6 +74,18 @@ class ProfileHandler(webapp2.RequestHandler):
             'all_shows': all_shows,
         }
         self.response.write(show_list_template.render(dict_for_template))
+    def post(self):
+        my_user = users.get_current_user()
+        # We ar assuming the user has a profile at this point
+        my_profile = Profile.query().filter(Profile.user_id == my_user.user_id ()).fetch(1)[0]
+        the_show_wanted = self.request.get('user-show')
+        #put shows into the database
+        show_record = Show()
+        show_record.show_name = the_show_wanted
+        show_record.user = my_profile.key
+        show_record.put()
+        time.sleep(0.1)
+        self.redirect('/profile')
 
 class List(webapp2.RequestHandler):
     def get(self):
@@ -88,15 +100,15 @@ class List(webapp2.RequestHandler):
         if not user_search:
             self.response.write(list_template.render())
         else:
-            user_search =  user_search.replace(" ", "+")
-            url = 'https://api.themoviedb.org/3/search/tv?api_key=affe4b9cbbe43b30bf85a6ae31037c7d&query=%s' %(user_search)
+            user_search2 =  user_search.replace(" ", "+")
+            url = 'https://api.themoviedb.org/3/search/tv?api_key=affe4b9cbbe43b30bf85a6ae31037c7d&query=%s' %(user_search2)
             result = urlfetch.fetch(url)
             result_decoded = result.content.decode('utf-8')
             result_json = json.loads(result_decoded)
 #If there arent results then disply text
             if not result_json['results']:
                 result_dict = {
-                    "nothing_here": "No show exists"
+                    "nothing_here": '"' + user_search + '" didn\'t match any results.'
                 }
                 self.response.write(list_template.render(result_dict))
             else:
@@ -104,6 +116,7 @@ class List(webapp2.RequestHandler):
                     "shows": result_json['results'][:10],
                 }
                 self.response.write(list_template.render(result_dict))
+
     def post(self):
         my_profile = force_signup(self)
         if not my_profile:
