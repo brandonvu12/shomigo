@@ -67,19 +67,6 @@ class ProfileHandler(webapp2.RequestHandler):
         }
         self.response.write(show_list_template.render(dict_for_template))
 
-    def post(self):
-        my_user = users.get_current_user()
-        # We ar assuming the user has a profile at this point
-        my_profile = Profile.query().filter(Profile.user_id == my_user.user_id ()).fetch(1)[0]
-        the_show_wanted = self.request.get('user-show')
-        #put shows into the database
-        show_record = Show()
-        show_record.show_name = the_show_wanted
-        show_record.user = my_profile.key
-        show_record.put()
-        time.sleep(0.1)
-        self.redirect('/profile')
-
 class List(webapp2.RequestHandler):
     def get(self):
         list_template = JINJA_ENVIRONMENT.get_template("templates/list.html")
@@ -97,7 +84,7 @@ class List(webapp2.RequestHandler):
 #If there arent results then disply text
             if not result_json['results']:
                 result_dict = {
-                    "shows": [{'name': "No shows match your search."}]
+                    "nothing_here": "There's nothing here"
                 }
                 self.response.write(list_template.render(result_dict))
             else:
