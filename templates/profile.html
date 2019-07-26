@@ -6,15 +6,22 @@
     <link rel = "stylesheet" href = "css/style2.css">
   </head>
   <body>
+
+<div class="content">
     <!--buttons -->
+    <br>
+    <h3> SHOMIGO </h3><br>
+
+  <header>
     <form action="/">
       <button id = "back" type="submit">Go Back</button>
     </form>
     <form action="/nickname">
       <button id = "settings" type="submit">Settings/About</button>
-    </form>
+  </form>
+</header>
    <!-- add shows to the list -->
-  <h1>Your Profile</h1>
+<br>  <h1 id="profile" class="neon">Your Profile</h1>
 <form method=POST action="/profile">
 <div class="Input">
     Put in a new show you watched:<br>
@@ -23,15 +30,12 @@
   </form>
 </div>
   <!-- the watched shows that are collected from that specifc user -->
-  <h1 id="yours">Your Watched Shows</h1>
+  <h1 class="neon" id="yours">Your Watched Shows</h1>
   {% for show in shows %}
     <p>{{show.show_name}}</p>
   {% endfor %}
-  <h1 id="shows" >All Watched Shows</h1>
-  {% for show in all_shows %}
-    <p>{{show.show_name}}</p>
-  {% endfor %}
 
+</div>
 <!-- this is the footer -->
   <footer class="foot">
     (c) 2019 CSSI
