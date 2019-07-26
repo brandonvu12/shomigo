@@ -9,4 +9,5 @@ class Profile(ndb.Model):
 
 class Show(ndb.Model):
     show_name = ndb.StringProperty(required = True)
+    poster_path = ndb.StringProperty(required=False)
     user = ndb.KeyProperty(Profile)

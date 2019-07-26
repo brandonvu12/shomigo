@@ -22,15 +22,17 @@
       <h3>Results</h3>
             {{nothing_here}}
       {% for show in shows %}
-
+      <form method="post" action="/list">
          {{ show['name'] }}<br>First Air Date:  {{ show['first_air_date'] }} <br>User Rating: {{ show['vote_average'] }}<br>
          {% if show['poster_path'] %}
            <img src="https://image.tmdb.org/t/p/w185/{{show['poster_path']}}">
+           <input type="hidden" name="poster_path" value="{{show['poster_path']}}">
          {% else %}
            <img src="http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png" id="Placeholder">
          {% endif %}
-         <form method=POST action="/list">
-         <button value="{{ show['name'] }} ({{ show['first_air_date'] }})" name="user-show">I've Seen This</button><br>
+         <br>
+         <input type="hidden" value="{{ show['name'] }} ({{ show['first_air_date'] }})" name="user-show">
+         <button>I've Seen This</button><br>
        </form>
       {% endfor %}
     </div><br>
