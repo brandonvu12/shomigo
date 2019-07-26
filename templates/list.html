@@ -27,7 +27,9 @@
          {% else %}
            <img src="http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png" id="Placeholder">
          {% endif %}
-         <button>I've Seen This</button><br>
+         <form method=POST action="/profile">
+         <button value="{{ show['name'] }}" name="user-show">I've Seen This</button><br>
+       </form>
       {% endfor %}
     <div><br>
 
