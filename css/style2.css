@@ -12,6 +12,7 @@ h1 {
   font-size: 36px;
   color:    #990000;
   font-family: 'Exo 2', sans-serif;
+  margin: auto;
 }
 
 .neon {
@@ -56,8 +57,7 @@ header{
   min-width: 85%;
   max-height:100%;
   margin:auto;
-  
-  padding-bottom: 9.5%;
+
 }
 /* h1{
   display: flex;
@@ -84,7 +84,7 @@ header{
 .foot{
   color: white;
   padding:6px;
-
+  background-color: #393939;
   /* width: max;
   height: max; */
   display: flex;
@@ -139,6 +139,7 @@ transition-duration: 0.4s;
   text-align: center;
   margin-top: 5%;
   margin-right: 16%;
+  margin-left: 16%;
 }
 #SubmitWatched{
     background-color: white;
@@ -202,7 +203,6 @@ h3{
   width: 150px;
   height: 20px;
   margin: auto;
-   margin-top: 10%;
   text-align: center;
   margin-bottom: 10px;
 }

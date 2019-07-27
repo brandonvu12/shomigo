@@ -8,7 +8,19 @@ h2{
 
 }
 
-
+.foot{
+  color: white;
+  padding:6px;
+  background-color: #393939;
+  /* width: max;
+  height: max; */
+  display: flex;
+  flex-direction: column;
+  flex:1;
+  font-size: 15px;
+  margin-top:-2.5%;
+  text-align: left;
+}
 h1 {
 
   text-decoration: underline;
@@ -16,8 +28,8 @@ h1 {
   text-align: center;
   text-transform: full-width;
   font-size: 0px;
-  background-color: black;
-  color:  silver;
+
+  color:  white;
   font-family: 'Exo 2', sans-serif;
   margin-top: -2%;
   margin-bottom:2%;
@@ -46,6 +58,7 @@ body{
    background-image: radial-gradient(#4C4C4C 1%, #393939 99%);
    background-blend-mode: color;
    color:white;
+   max-height: 90%;
 
 }
 
@@ -64,6 +77,10 @@ body{
 }
 #nickname22{
   margin-top: 10%;
+  font-size: 25px;
+}
+.joined{
+  font-size: 20px;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Exo+2:200i);

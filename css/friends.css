@@ -15,7 +15,9 @@ body {
   justify-content: center;
   align-items: center;
   background: white;
-  min-height: 10vh;
+  min-height: 85%;
+  height: 100%;
+
   background-image: radial-gradient(#4C4C4C 1%, #393939 99%);
   background-blend-mode: darken;
 }
@@ -73,33 +75,57 @@ h1:focus {
         box-shadow: none;
     }
 }
-
 .content{
-  max-width: 100%;
   background-color: #161616;
-  margin:auto;
-  height: 100vh;
-  min-width: 86%;
+  margin: auto;
+  max-width: 85%;
+  height: 100%;
+  min-width: 85%;
+  max-height: 100%;
+  min-height: 85%;
+  padding-bottom: 9.5%;
+}
+img{
+  height: 200px;
+}
+
+.images{
+  height: 400px;
+  width: 250px;
+  padding: 4%;
+  color:white;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.show{
+  font-size: 18px;
+  vertical-align: middle;
+  padding: 10px;
+  flex-direction: column;
+  flex-flow: column;
+  justify-content: center;
+  color:white;
+  font-weight: 500;
+
+
+
 }
 
 
-
-
-
-
 footer{
-  background-color: #4C4C4C ;
   color: white;
-  padding:5px;
-  width: max;
-  height: max;
+  padding:6px;
+  max-width: 100%;
+  /* width: max;
+  height: max; */
   display: flex;
-  align-self: stretch;
-  width: max;
-  margin-top:34%;
-  margin-bottom: 0px;
-  display: flex;
-  flex-basis: auto;
+  flex-direction: column;
+  flex:1;
+  font-size: 15px;
+  width: 100%;
+  margin-top: 20px;
+
 }
 
 
@@ -142,8 +168,9 @@ h2{
 
 
 
+
 }
-.images{
+/* .images{
   height: 400px;
   width: 250px;
   padding: 4%;
@@ -155,17 +182,42 @@ h2{
   justify-content: center;
   color:white;
   font-weight: 500;
-}
-.flex{
-  display: flex;
-  flex-direction:row;
-  flex-wrap: wrap;
+} */
+
+
+.images2{
+  height: 400px;
+  width: 250px;
+  padding: 4%;
   color: white;
 
 }
+.imageshows{
+  width: 250px;
+  padding: 4%;
+  display: inline-flex;
+  flex-direction: row;
+}
+.flex{
+  display: flex;
+  display: inline-flex;
+  flex-direction: row;
+}
+.flex-column {
+  flex-direction: column;
+}
 img{
   height: 200px;
+  display: inline-flex;
+  flex-direction: row;
 }
 h3{
   font-size: 20px;
+  color: white;
+}
+
+.friend-children {
+  flex: 1;
+  padding-left: 30px;
+  flex-grow: 0;
 }
