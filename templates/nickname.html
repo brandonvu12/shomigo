@@ -12,10 +12,12 @@
 </div>
 
     <h1> About You </h1>
+    <div class="joined">
     {% if profile is not none %}
     You joined on {{profile.joined_on.strftime("%c")}}
     You updated on {{profile.updated_on.strftime("%c")}}
     <form method=POST action="/nickname">
+    </div>
 <div id="nickname22">
       Your Nickname:<br>
       <input type="text" name="nickname" value="{{profile.nickname}}">
@@ -37,7 +39,10 @@
 
 
 </div>
-
+</div>
+<footer class="foot">
+  (c) 2019 Team 404
+</footer>
 
   </body>
 </html>

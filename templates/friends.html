@@ -13,27 +13,28 @@
     <br>
     <h1>Friends</h1>
     <h2>The shows all your friends watched:</h2>
-<div class="flex">
+    <div class="flex flex-column">
     {% for id, info in shows_mapping.items() %}
-    <div class="images">
-    <h3>{{ info["profile"].nickname }}</h3>
-      {% for show in info["shows"] %}
-
-      {% if not show.poster_path %}
-      <img src="http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png" id="Placeholder">
-      {% else %}
-        <img src="https://image.tmdb.org/t/p/w185/{{ show.poster_path }}">
-      {% endif %}
-        <div class="show"> {{show.show_name}} </p></div>
+    <div class="flex friend-container">
+      <div class="friend-children">
+        <h3>{{ info["profile"].nickname }}</h3>
+      </div>
+          {% for show in info["shows"] %}
+          <div class="imageshows friend-children">
+            {% if not show.poster_path %}
+              <img src="http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png" id="Placeholder">
+            {% else %}
+              <img src="https://image.tmdb.org/t/p/w185/{{ show.poster_path }}">
+            {% endif %}
+            <div class="show"> {{show.show_name}}</div>
+        </div>
       {% endfor %}
+    </div>
     {% endfor %}
   </div>
-
-</div>
-
-    <footer >
-      (c) 2019 CSSI
-      </footer>
+  <footer >
+    (c) 2019 Team 404
+    </footer>
 </div>
 
   </body>
