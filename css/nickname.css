@@ -2,9 +2,9 @@ h2{
   text-align: center;
   text-transform: full-width;
   margin-top: -50rem;
-  font-size: 20px;
+  font-size: 24px;
   padding-top: 10px;
-
+  color: white;
 
 }
 
@@ -18,7 +18,7 @@ h2{
   flex-direction: column;
   flex:1;
   font-size: 15px;
-  margin-top:-2.5%;
+  margin-top:30%;
   text-align: left;
 }
 h1 {
@@ -28,7 +28,6 @@ h1 {
   text-align: center;
   text-transform: full-width;
   font-size: 0px;
-
   color:  white;
   font-family: 'Exo 2', sans-serif;
   margin-top: -2%;
@@ -76,6 +75,7 @@ body{
 
 }
 #nickname22{
+  color: white;
   margin-top: 10%;
   font-size: 25px;
 }
