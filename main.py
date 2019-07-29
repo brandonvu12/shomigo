@@ -50,7 +50,7 @@ class LoginHandler(webapp2.RequestHandler):
         self.redirect('/')
         return
 
-    login_url = users.create_login_url('/profile')
+    login_url = users.create_login_url('/')
     login_text = "Sign in"
     nickname = "guest"
 
