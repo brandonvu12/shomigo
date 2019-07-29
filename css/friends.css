@@ -202,6 +202,7 @@ h2{
   display: flex;
   display: inline-flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 .flex-column {
   flex-direction: column;
